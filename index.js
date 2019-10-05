@@ -1,9 +1,15 @@
 const grpc = require('grpc');
+const uuidv1 = require('uuid/v1');
+
 const notesProto = grpc.load('notes.proto');
+
+
 const notes = [
   { id: '1', title: 'Note 1', content: 'Content 1'},
   { id: '2', title: 'Note 2', content: 'Content 2'}
 ]
+
+
 
 const server = new grpc.Server();
 
@@ -19,8 +25,16 @@ server.addService(notesProto.NoteService.service, {
    */
   list: (call, cb) => {
       cb(null, notes);
+  },
+  insert: ({ request: note }, cb) => {
+    note.id = uuidv1();
+    
+    notes.push(note);
+
+    cb(null, note);
   }
 })
+
 
 server.bind(
   '127.0.0.1:50051',
