@@ -28,10 +28,24 @@ server.addService(notesProto.NoteService.service, {
   },
   insert: ({ request: note }, cb) => {
     note.id = uuidv1();
-    
+
     notes.push(note);
 
     cb(null, note);
+  },
+  delete: ({ request }, cb) => {
+    let existingNoteIndex = notes.findIndex((n) => n.id == request.id)
+
+    if (existingNoteIndex != -1) {
+      notes.splice(existingNoteIndex, 1)
+      cb(null, notes[existingNoteIndex]);
+      return;
+    }
+
+    cb({
+        code: grpc.status.NOT_FOUND,
+        details: "Not found"
+    })
   }
 })
 
