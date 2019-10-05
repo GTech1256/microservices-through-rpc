@@ -1,0 +1,12 @@
+{
+  "name": "microservices-through-rpc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/GTech1256/microservices-through-rpc.git",
+  "author": "Roman Bakakin <pomah156@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "grpc": "^1.24.0",
+    "uuid": "^3.3.3"
+  }
+}
