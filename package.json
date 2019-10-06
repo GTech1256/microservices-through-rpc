@@ -6,6 +6,10 @@
   "author": "Roman Bakakin <pomah156@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@grpc/proto-loader": "^0.5.2",
+    "axios": "^0.19.0",
+    "bcrypt": "^3.0.6",
+    "express": "^4.17.1",
     "grpc": "^1.24.0",
     "uuid": "^3.3.3"
   }
